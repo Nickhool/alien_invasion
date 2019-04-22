@@ -14,7 +14,7 @@ class Settings():
         self.ship_limit = 1
 
         # 子弹设置
-        self.bullet_width = 1200
+        self.bullet_width = 10
         self.bullet_height = 15
         self.bullet_color = 60, 60, 60
         self.bullets_allowed = 3
@@ -35,6 +35,9 @@ class Settings():
 
         # fleet_direction为1表示向右移，为-1表示向左移
         self.fleet_direction = 1
+
+        # 记分
+        self.alien_points = 50
 
     def increase_speed(self):
         """提高速度设置"""
