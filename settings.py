@@ -14,7 +14,7 @@ class Settings():
         self.ship_limit = 1
 
         # 子弹设置
-        self.bullet_width = 10
+        self.bullet_width = 1000
         self.bullet_height = 15
         self.bullet_color = 60, 60, 60
         self.bullets_allowed = 3
@@ -24,7 +24,7 @@ class Settings():
 
 
         # 以什么样的速度加快游戏节奏
-        self.speedup_scale = 1.1
+        self.speedup_scale = 1.5
         self.initialize_dynamic_settings()
 
     def initialize_dynamic_settings(self):
