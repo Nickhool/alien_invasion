@@ -1,7 +1,7 @@
 __Author__ = "noduez"
 
 import sys
-
+import json
 import pygame
 
 from bullet import Bullet
@@ -128,7 +128,10 @@ def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, 
 def check_high_score(stats, sb):
     """检查是否诞生了新的最高分"""
     if stats.score > stats.high_score:
-        stats.high_score = stats.score
+        # stats.high_score = stats.score
+        # 用文件记录最高分
+        with open('high_score.json', 'w') as f_obj:
+            json.dump(stats.score, f_obj)
         sb.prep_high_score()
 
 def fire_bullets(ai_settings, screen, ship, bullets):
@@ -227,3 +230,14 @@ def update_aliens(ai_settings, stats, sb, screen, ship, aliens, bullets):
         ship_hit(ai_settings, stats, sb, screen, ship, aliens, bullets)
 
     check_alines_bottom(ai_settings, stats, sb, screen, ship, aliens, bullets)
+
+def get_high_score():
+    '''从文件中查询最高分'''
+    try:
+        with open('high_score.json', 'r') as f:
+            num = json.load(f)
+
+    except FileNotFoundError:
+        return 0
+    else:
+        return int(num)
